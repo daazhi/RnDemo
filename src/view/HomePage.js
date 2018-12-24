@@ -14,15 +14,26 @@ export default class HomePage extends React.Component {
 
   constructor(props) {
     super(props);
+
+    let blueTab = this.renderContent('blueTab')
+    let redTab = this.renderContent('redTab')
+    let greenTab = this.renderContent('greenTab')
+    let yellowTab = this.renderContent('yellowTab')
+
+    let viewMap = {blueTab, redTab, greenTab, yellowTab}
+
+    let firstTabName = blueTab
+
     this.state = {
-      selectedTab: 'redTab',
+      selectedTab: firstTabName,
+      viewMap
     };
   }
 
   renderContent(pageText, zIndex) {
     return (
-      <View style={{flex: 1, alignItems: 'center', backgroundColor: 'white', zIndex: zIndex}}>
-        <SearchBar placeholder={pageText} showCancelButton/>
+      <View style={{flex: 1, alignItems: 'center', backgroundColor: 'white'}}>
+        {/*<SearchBar placeholder={pageText} showCancelButton/>*/}
         <Text style={{margin: 50}}>{pageText}</Text>
       </View>
     );
@@ -30,12 +41,15 @@ export default class HomePage extends React.Component {
 
   onChangeTab(tabName) {
     this.setState({
-      selectedTab: tabName,
+      selectedTab: tabName
     });
+
   }
 
   render() {
+
     return (
+
       <TabBar
         unselectedTintColor="#949494"
         tintColor="#33A3F4"
@@ -47,8 +61,8 @@ export default class HomePage extends React.Component {
           selected={this.state.selectedTab === 'blueTab'}
           onPress={() => this.onChangeTab('blueTab')}
         >
-          {this.renderContent('Life Tab', 4)}
         </TabBar.Item>
+
         <TabBar.Item
           icon={<Icon name="ordered-list"/>}
           title="Koubei"
@@ -56,24 +70,25 @@ export default class HomePage extends React.Component {
           selected={this.state.selectedTab === 'redTab'}
           onPress={() => this.onChangeTab('redTab')}
         >
-          {this.renderContent('Koubei Tab', 5)}
         </TabBar.Item>
+
         <TabBar.Item
           icon={<Icon name="like"/>}
           title="Friend"
           selected={this.state.selectedTab === 'greenTab'}
           onPress={() => this.onChangeTab('greenTab')}
         >
-          {this.renderContent('Friend Tab', 4)}
         </TabBar.Item>
+
         <TabBar.Item
           icon={<Icon name="user"/>}
           title="My"
           selected={this.state.selectedTab === 'yellowTab'}
           onPress={() => this.onChangeTab('yellowTab')}
         >
-          {this.renderContent('My Tab', 1)}
+          {this.state.viewMap[this.state.selectedTab]}
         </TabBar.Item>
+
       </TabBar>
     );
   }
