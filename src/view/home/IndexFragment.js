@@ -24,7 +24,7 @@ export default class IndexFragment extends React.Component {
 
   render() {
     return (
-      <ScrollView contentContainerStyle={{paddingVertical: 10}}>
+      <ScrollView contentContainerStyle={{paddingVertical: 0}}>
 
         <Swiper style={styles.wrapper} height={240} autoplay
                 onMomentumScrollEnd={(e, state, context) => console.log('index:', state.index)}
@@ -92,7 +92,7 @@ export default class IndexFragment extends React.Component {
         {createFloor('123')}
         {createFloor('456')}
         {createFloor('123')}
-        {createFloor('456')}
+        {createFloor('4567')}
 
       </ScrollView>
     );

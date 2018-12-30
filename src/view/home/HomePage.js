@@ -1,5 +1,4 @@
 import React from 'react';
-import {Text, View} from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import {Icon} from '../../icon'
 
@@ -14,7 +13,6 @@ const BottomTabs = createBottomTabNavigator(
       screen: IndexFragment,
       path: '/',
       navigationOptions: {
-        header: false,
         tabBarLabel: 'Home',
         tabBarIcon: ({ tintColor, focused }) => (
           <Icon
@@ -70,6 +68,9 @@ const BottomTabs = createBottomTabNavigator(
   },
   {
     tabBarOptions: {
+      initialSelectedIndex: 1,
+      selectedIndex: 1,
+      selected: 'ActivityTab',
       showLabel: false
     }
   }
